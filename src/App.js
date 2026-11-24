@@ -44,11 +44,11 @@ export default function App() {
     setSearch(searchedLead);
   }
 
-  let filtered = leads.filter((lead) =>
-    lead.name.toLowerCase().includes(search.toLowerCase()),
+  let filtered = leads.filter(
+    (lead) =>
+      lead.name.toLowerCase().includes(search.toLowerCase()) ||
+      lead.email.toLowerCase().includes(search.toLowerCase()),
   );
-
-  console.log(filtered);
 
   return (
     <div className="App">
