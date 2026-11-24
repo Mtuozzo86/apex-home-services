@@ -3,10 +3,12 @@ import { useState } from "react";
 import initialLeads from "./data/initialLeads";
 import LeadsList from "./components/LeadsList";
 import LeadForm from "./components/LeadForm";
+import SearchLead from "./components/SearchLead";
 
 export default function App() {
   const [leads, setLeads] = useState(initialLeads);
   const [selectedLead, setSelectedLead] = useState(null);
+  const [search, setSearch] = useState('')
 
   function handleAddLead(newLead) {
     setLeads((prev) => [
@@ -45,6 +47,7 @@ export default function App() {
         onSubmitLeadForm={handleAddLead}
         onUpdateLead={handleUpdatedLead}
       />
+      <SearchLead />
       <LeadsList
         onDeleteLead={handleDeleteLead}
         onEditLead={handleEditLead}
