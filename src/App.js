@@ -9,6 +9,7 @@ export default function App() {
   const [leads, setLeads] = useState(initialLeads);
   const [selectedLead, setSelectedLead] = useState(null);
   const [search, setSearch] = useState('')
+  console.log('filtered search in app: ', search)
 
   function handleAddLead(newLead) {
     setLeads((prev) => [
@@ -40,6 +41,10 @@ export default function App() {
     );
   }
 
+  function handleSearch(searchedLead){
+    setSearch(searchedLead)
+  }
+
   return (
     <div className="App">
       <LeadForm
@@ -47,7 +52,7 @@ export default function App() {
         onSubmitLeadForm={handleAddLead}
         onUpdateLead={handleUpdatedLead}
       />
-      <SearchLead />
+      <SearchLead onSearch={handleSearch}/>
       <LeadsList
         onDeleteLead={handleDeleteLead}
         onEditLead={handleEditLead}
