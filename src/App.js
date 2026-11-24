@@ -42,11 +42,13 @@ export default function App() {
 
   function handleSearch(searchedLead) {
     setSearch(searchedLead);
-    let filtered = leads.filter((lead) =>
-      lead.name.toLowerCase().includes(search.toLowerCase()),
-    );
-    setLeads(filtered)
   }
+
+  let filtered = leads.filter((lead) =>
+    lead.name.toLowerCase().includes(search.toLowerCase()),
+  );
+
+  console.log(filtered);
 
   return (
     <div className="App">
@@ -59,7 +61,7 @@ export default function App() {
       <LeadsList
         onDeleteLead={handleDeleteLead}
         onEditLead={handleEditLead}
-        leads={leads}
+        leads={filtered}
         onUpdateStatus={handleUpdateStatus}
       />
     </div>
