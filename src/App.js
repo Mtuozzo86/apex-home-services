@@ -8,8 +8,7 @@ import SearchLead from "./components/SearchLead";
 export default function App() {
   const [leads, setLeads] = useState(initialLeads);
   const [selectedLead, setSelectedLead] = useState(null);
-  const [search, setSearch] = useState('')
-  console.log('filtered search in app: ', search)
+  const [search, setSearch] = useState("");
 
   function handleAddLead(newLead) {
     setLeads((prev) => [
@@ -28,7 +27,7 @@ export default function App() {
 
   function handleUpdatedLead(updatedLead) {
     setLeads((prev) =>
-      prev.map((lead) => (lead.id === updatedLead.id ? updatedLead : lead))
+      prev.map((lead) => (lead.id === updatedLead.id ? updatedLead : lead)),
     );
     setSelectedLead(null);
   }
@@ -36,13 +35,17 @@ export default function App() {
   function handleUpdateStatus(id, newStatus) {
     setLeads((prev) =>
       prev.map((lead) =>
-        lead.id === id ? { ...lead, status: newStatus } : lead
-      )
+        lead.id === id ? { ...lead, status: newStatus } : lead,
+      ),
     );
   }
 
-  function handleSearch(searchedLead){
-    setSearch(searchedLead)
+  function handleSearch(searchedLead) {
+    setSearch(searchedLead);
+    let filtered = leads.filter((lead) =>
+      lead.name.toLowerCase().includes(search.toLowerCase()),
+    );
+    setLeads(filtered)
   }
 
   return (
@@ -52,7 +55,7 @@ export default function App() {
         onSubmitLeadForm={handleAddLead}
         onUpdateLead={handleUpdatedLead}
       />
-      <SearchLead onSearch={handleSearch}/>
+      <SearchLead onSearch={handleSearch} />
       <LeadsList
         onDeleteLead={handleDeleteLead}
         onEditLead={handleEditLead}

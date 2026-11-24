@@ -1,12 +1,7 @@
-import { useState } from "react";
+function SearchLead({ onSearch }) {
 
-function SearchLead({onSearch}) {
-  const [search, setSearch] = useState('')
-
-  function handleSearch(e){
-    e.preventDefault()
-    setSearch(e.target.value)
-    onSearch(search)
+  function handleSearch(e) {
+    onSearch(e.target.value);
   }
 
   return (
