@@ -50,6 +50,8 @@ export default function App() {
       lead.email.toLowerCase().includes(search.toLowerCase()),
   );
 
+  // adding a git ignore
+
   return (
     <div className="App">
       <LeadForm
